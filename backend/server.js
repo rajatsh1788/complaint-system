@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5174",
-      "https://complaint-frontend.onrender.com"
+      "https://complaint-system-frontend-vccs.onrender.com"
     ],
     credentials: true,
   })
