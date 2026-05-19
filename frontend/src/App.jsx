@@ -1,38 +1,73 @@
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 
-import Login from "./pages/Login";
+// PAGES
+
 import Signup from "./pages/Signup";
-import ComplaintForm from "./pages/ComplaintForm";
+import Login from "./pages/Login";
 import ComplaintList from "./pages/ComplaintList";
-import UpdateStatus from "./pages/UpdateStatus";
+import ComplaintForm from "./pages/ComplaintForm";
+
+// COMPONENTS
+
+import ProtectedRoute
+from "./components/ProtectedRoute";
 
 function App() {
+
   return (
+
     <BrowserRouter>
 
       <Routes>
 
-        <Route path="/" element={<Login />} />
-
-        <Route path="/signup" element={<Signup />} />
+        {/* DEFAULT ROUTE */}
 
         <Route
-          path="/add-complaint"
-          element={<ComplaintForm />}
+          path="/"
+          element={
+            <Navigate to="/login" />
+          }
         />
+
+        {/* AUTH ROUTES */}
+
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
+
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        {/* PROTECTED ROUTES */}
 
         <Route
           path="/complaints"
-          element={<ComplaintList />}
+          element={
+            <ProtectedRoute>
+
+              <ComplaintList />
+
+            </ProtectedRoute>
+          }
         />
 
         <Route
-          path="/update/:id"
-          element={<UpdateStatus />}
+          path="/add-complaint"
+          element={
+            <ProtectedRoute>
+
+              <ComplaintForm />
+
+            </ProtectedRoute>
+          }
         />
 
       </Routes>
