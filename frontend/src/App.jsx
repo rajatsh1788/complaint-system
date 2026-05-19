@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import ComplaintList from "./pages/ComplaintList";
 import ComplaintForm from "./pages/ComplaintForm";
+import UpdateStatus from "./pages/UpdateStatus";
 
 function App() {
 
@@ -51,6 +52,13 @@ function App() {
         <Route
           path="/add-complaint"
           element={<ComplaintForm />}
+        />
+
+        {/* UPDATE STATUS ROUTE */}
+
+        <Route
+          path="/update/:id"
+          element={<UpdateStatus />}
         />
 
       </Routes>
