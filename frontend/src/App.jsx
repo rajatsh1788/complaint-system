@@ -12,11 +12,6 @@ import Login from "./pages/Login";
 import ComplaintList from "./pages/ComplaintList";
 import ComplaintForm from "./pages/ComplaintForm";
 
-// COMPONENTS
-
-import ProtectedRoute
-from "./components/ProtectedRoute";
-
 function App() {
 
   return (
@@ -46,28 +41,16 @@ function App() {
           element={<Login />}
         />
 
-        {/* PROTECTED ROUTES */}
+        {/* COMPLAINT ROUTES */}
 
         <Route
           path="/complaints"
-          element={
-            <ProtectedRoute>
-
-              <ComplaintList />
-
-            </ProtectedRoute>
-          }
+          element={<ComplaintList />}
         />
 
         <Route
           path="/add-complaint"
-          element={
-            <ProtectedRoute>
-
-              <ComplaintForm />
-
-            </ProtectedRoute>
-          }
+          element={<ComplaintForm />}
         />
 
       </Routes>
